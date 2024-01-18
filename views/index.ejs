@@ -7,14 +7,15 @@
   <link rel="stylesheet" href="/styles/main.css">
   <title>Weather App</title>
 </head>
-
 <body>
-    <h1>Hello World</h1>
-    <% if (data && data.daily.weather && data.daily.weather.length > 0) { %>
-      <p>Weather: <%= data.daily.weather[0].main %></p>
-      <p>Description: <%= data.daily.weather[0].description %></p>
-    <% } else { %>
-      <p>Weather data not available.</p>
-    <% } %>
-  </body>
-  </html>
+  <h1>Current Weather</h1>
+  <% if (data && data.weather && data.weather.length > 0) { %>
+    <p>Weather: <%= data.weather[0].main %></p>
+    <p>Description: <%= data.weather[0].description %></p>
+    <p>Temperature: <%= data.temp %> K (<%= ((data.temp - 273.15) * 9/5 + 32).toFixed(2) %> °F)</p>
+    <p>Feels Like: <%= data.feels_like %> K (<%= ((data.feels_like - 273.15)* 9/5 + 32).toFixed(2) %> °F)</p>
+  <% } else { %>
+    <p>Weather data not available.</p>
+  <% } %>
+</body>
+</html>
