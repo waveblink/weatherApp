@@ -1,6 +1,8 @@
 import express from 'express';
 import bodyParser from "body-parser";
 import axios from "axios";
+require('dotenv').config();
+const apiKey = process.env.API_KEY;
 
 
 const app = express();
@@ -14,8 +16,8 @@ app.set('view engine', 'ejs');
 
 app.get("/", async (req, res) => {
   try{  
-  const response = await axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=c88e3c70e2041522ce07709479f1ca4e`);
-  const result = response.data;
+    const response = await axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=${apiKey}`);
+    const result = response.data;
   console.log(result);
     res.render("index.ejs", { data: result });
   } catch (error) {
