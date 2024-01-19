@@ -5,17 +5,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <title>Weather App</title>
 </head>
-<body>
-  <h1>Current Weather</h1>
-  <% if (data && data.weather && data.weather.length > 0) { %>
-    <p>Weather: <%= data.weather[0].main %></p>
-    <p>Description: <%= data.weather[0].description %></p>
-    <p>Temperature: <%= data.temp %> K (<%= ((data.temp - 273.15) * 9/5 + 32).toFixed(2) %> °F)</p>
-    <p>Feels Like: <%= data.feels_like %> K (<%= ((data.feels_like - 273.15)* 9/5 + 32).toFixed(2) %> °F)</p>
-  <% } else { %>
-    <p>Weather data not available.</p>
-  <% } %>
-</body>
-</html>
+<body class="d-flex align-items-center" style="min-height: 100vh;">
+  
+    <div class="container text-center">
+      <div class="row" >        
+        <div class="col-md-4 col-sm-6">
+          <% if (chicagoWeather && chicagoWeather.weather && chicagoWeather.weather.length > 0) { %>
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" src="/images/chicago.jpg" alt="Chicago" width="100%" height="225">
+              <div class="card-body">
+                <ul>
+                  <li>Weather: <%= chicagoWeather.weather[0].main %>
+                    <% if (chicagoWeather.weather[0].main === 'Clouds') { %>
+                      <img src="/images/cloud-fill.svg" alt="Cloudy">
+                    <% } %>
+                    <% if (chicagoWeather.weather[0].main === 'Dust') { %>
+                      <img src="/images/cloud-haze-fill.svg" alt="haze">
+                    <% } %>
+                    </li>
+                  <li>Description: <%= chicagoWeather.weather[0].description %></li>
+                  <li>Temperature: <%= ((chicagoWeather.temp - 273.15) * 9/5 + 32).toFixed(2) %> °F</li>
+                  <li>Feels Like: <%= ((chicagoWeather.feels_like - 273.15)* 9/5 + 32).toFixed(2) %> °F</li>
+                </ul>
+                 </div>
+      <div class="card-footer d-flex justify-content-center align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+        </div>
+      </div>
+    </div>
+    <% } else { %>
+      <p>Weather data not available.</p>
+    <% } %>
+  </div>
+
+    <div class="col-md-4 col-sm-6">
+    <% if (dallasWeather && dallasWeather.weather && dallasWeather.weather.length > 0) { %>
+
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" src="/images/Dallas.jpg" alt="Dallas" width="100%" height="225">
+              <div class="card-body">
+                <ul>
+                  <li>Weather: <%= dallasWeather.weather[0].main %>
+                    <% if (dallasWeather.weather[0].main === 'Clouds') { %>
+                      <img src="/images/cloud-fill.svg" alt="Cloudy">
+                    <% } %>
+                    <% if (dallasWeather.weather[0].main === 'Dust') { %>
+                      <img src="/images/cloud-haze-fill.svg" alt="haze">
+                    <% } %>
+                  </li>
+                  <li>Description: <%= dallasWeather.weather[0].description %></li>
+                  <li>Temperature: <%= ((dallasWeather.temp - 273.15) * 9/5 + 32).toFixed(2) %> °F</li>
+                  <li>Feels Like: <%= ((dallasWeather.feels_like - 273.15)* 9/5 + 32).toFixed(2) %> °F</li>
+                </ul>
+              </div>
+              <div class="card-footer d-flex justify-content-center align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                </div>
+              </div>
+            </div>
+            <% } else { %>
+              <p>Weather data not available.</p>
+            <% } %>
+          </div>
+          <div class="col-md-4 col-sm-6">
+             <% if (indianaWeather && indianaWeather.weather && indianaWeather.weather.length > 0) { %>
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" src="/images/Indiana.jpg" alt="Indiana " width="100%" height="225">
+              <div class="card-body">
+                <ul>
+                  <li>Weather: <%= indianaWeather.weather[0].main %>
+                    <% if (indianaWeather.weather[0].main === 'Clouds') { %>
+                      <img src="/images/cloud-fill.svg" alt="Cloudy">
+                    <% } %>
+                    <% if (indianaWeather.weather[0].main === 'Dust') { %>
+                      <img src="/images/cloud-haze-fill.svg" alt="haze">
+                    <% } %>
+                  </li>
+                  <li>Description: <%= indianaWeather.weather[0].description %></li>
+                  <li>Temperature: <%= ((indianaWeather.temp - 273.15) * 9/5 + 32).toFixed(2) %> °F</li>
+                  <li>Feels Like: <%= ((indianaWeather.feels_like - 273.15)* 9/5 + 32).toFixed(2) %> °F</li>
+                </ul>
+              </div>
+              <div class="card-footer d-flex justify-content-center align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                </div>
+              </div>
+            </div>
+            <% } else { %>
+              <p>Weather data not available.</p>
+            <% } %>
+          </div>
+    </body>
+    </html>
